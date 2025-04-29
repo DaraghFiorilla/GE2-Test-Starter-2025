@@ -11,8 +11,10 @@ albedo_color = Color(0, 0, 0, 1)
 
 [node name="PropArm" type="Node3D"]
 script = ExtResource("1_bk8r8")
+rotate_increment = 0.25
+max_rotate_force = 3.0
 
-[node name="PropBlade" type="RigidBody3D" parent="."]
+[node name="PropBlade" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PropBlade"]
 transform = Transform3D(0.075, 0, 0, 0, 0.05, 0, 0, 0, 0.35, 0, 0, 0)
@@ -23,7 +25,7 @@ transform = Transform3D(0.075, 0, 0, 0, 0.05, 0, 0, 0, 0.35, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_bk8r8")
 mesh = SubResource("BoxMesh_x8g0v")
 
-[node name="PropBlade2" type="RigidBody3D" parent="."]
+[node name="PropBlade2" type="StaticBody3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PropBlade2"]

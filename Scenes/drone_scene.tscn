@@ -1,4 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://b1mt883kcp3i"]
+[gd_scene load_steps=19 format=3 uid="uid://b1mt883kcp3i"]
+
+[ext_resource type="PackedScene" uid="uid://cvhihnsc5k26f" path="res://Scenes/prop_arm.tscn" id="1_2ybdg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jgr37"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -63,7 +65,7 @@ mesh = SubResource("PlaneMesh_qhlfa")
 shape = SubResource("WorldBoundaryShape3D_jgr37")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.10388, 3.01379)
+transform = Transform3D(1, 0, 0, 0, 0.979237, 0.202719, 0, -0.202719, 0.979237, 0, 3.56891, 6.58138)
 
 [node name="DroneBase" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.911544, 0)
@@ -91,6 +93,9 @@ transform = Transform3D(0.25, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_qrxkg")
 mesh = SubResource("BoxMesh_qhlfa")
 
+[node name="PropArm" parent="DroneBase/DroneArm" instance=ExtResource("1_2ybdg")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.1, 0.04, 0)
+
 [node name="DroneArm2" type="RigidBody3D" parent="DroneBase"]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0.225, 0, 0.2)
 
@@ -102,6 +107,9 @@ shape = SubResource("BoxShape3D_wrrl7")
 transform = Transform3D(0.25, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_nb8mf")
 mesh = SubResource("BoxMesh_qhlfa")
+
+[node name="PropArm" parent="DroneBase/DroneArm2" instance=ExtResource("1_2ybdg")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.1, 0.04, 0)
 
 [node name="DroneArm3" type="RigidBody3D" parent="DroneBase"]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -0.225, 0, -0.2)
@@ -115,6 +123,9 @@ transform = Transform3D(0.25, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_hc3en")
 mesh = SubResource("BoxMesh_qhlfa")
 
+[node name="PropArm" parent="DroneBase/DroneArm3" instance=ExtResource("1_2ybdg")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.1, 0.04, 0)
+
 [node name="DroneArm4" type="RigidBody3D" parent="DroneBase"]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0.225, 0, -0.2)
 
@@ -126,3 +137,6 @@ shape = SubResource("BoxShape3D_wrrl7")
 transform = Transform3D(0.25, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_h8uh2")
 mesh = SubResource("BoxMesh_qhlfa")
+
+[node name="PropArm" parent="DroneBase/DroneArm4" instance=ExtResource("1_2ybdg")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.1, 0.04, 0)
