@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b1mt883kcp3i"]
+[gd_scene load_steps=14 format=3 uid="uid://b1mt883kcp3i"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jgr37"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -22,6 +22,21 @@ size = Vector2(100, 100)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_jgr37"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qhlfa"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jgr37"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qrxkg"]
+
+[sub_resource type="Skin" id="Skin_nb8mf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hc3en"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wrrl7"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_qhlfa"]
+
 [node name="drone_scene" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -41,3 +56,61 @@ shape = SubResource("WorldBoundaryShape3D_jgr37")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.10388, 3.01379)
+
+[node name="DroneBase" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.911544, 0)
+
+[node name="DroneBaseMesh" type="MeshInstance3D" parent="DroneBase"]
+transform = Transform3D(0.3, 0, 0, 0, 0.05, 0, 0, 0, 0.25, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_qhlfa")
+material_overlay = SubResource("StandardMaterial3D_jgr37")
+mesh = SubResource("BoxMesh_qrxkg")
+skin = SubResource("Skin_nb8mf")
+
+[node name="DroneBaseShape" type="CollisionShape3D" parent="DroneBase"]
+transform = Transform3D(0.3, 0, 0, 0, 0.05, 0, 0, 0, 0.25, 0, 0, 0)
+shape = SubResource("BoxShape3D_hc3en")
+
+[node name="DroneArm" type="RigidBody3D" parent="DroneBase"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -0.225, 0, 0.2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DroneBase/DroneArm"]
+transform = Transform3D(0.25, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+shape = SubResource("BoxShape3D_wrrl7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="DroneBase/DroneArm"]
+transform = Transform3D(0.25, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+mesh = SubResource("BoxMesh_qhlfa")
+
+[node name="DroneArm2" type="RigidBody3D" parent="DroneBase"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0.225, 0, 0.2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DroneBase/DroneArm2"]
+transform = Transform3D(0.25, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+shape = SubResource("BoxShape3D_wrrl7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="DroneBase/DroneArm2"]
+transform = Transform3D(0.25, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+mesh = SubResource("BoxMesh_qhlfa")
+
+[node name="DroneArm3" type="RigidBody3D" parent="DroneBase"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -0.225, 0, -0.2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DroneBase/DroneArm3"]
+transform = Transform3D(0.25, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+shape = SubResource("BoxShape3D_wrrl7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="DroneBase/DroneArm3"]
+transform = Transform3D(0.25, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+mesh = SubResource("BoxMesh_qhlfa")
+
+[node name="DroneArm4" type="RigidBody3D" parent="DroneBase"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0.225, 0, -0.2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DroneBase/DroneArm4"]
+transform = Transform3D(0.25, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+shape = SubResource("BoxShape3D_wrrl7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="DroneBase/DroneArm4"]
+transform = Transform3D(0.25, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+mesh = SubResource("BoxMesh_qhlfa")
